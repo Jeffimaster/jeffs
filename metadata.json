@@ -1,0 +1,5 @@
+{
+  "name": "Scanner - Bio-ID Pro",
+  "description": "A futuristic-looking fingerprint scanner app. Test your 'orientation' with advanced biometric simulation. Includes a secret override for the owner.",
+  "requestFramePermissions": []
+}
