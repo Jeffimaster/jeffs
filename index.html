@@ -3,7 +3,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="theme-color" content="#020617">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -12,6 +12,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --sat: env(safe-area-inset-top);
+            --sar: env(safe-area-inset-right);
+            --sab: env(safe-area-inset-bottom);
+            --sal: env(safe-area-inset-left);
+        }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #020617;
@@ -19,7 +25,8 @@
             overflow: hidden;
             user-select: none;
             -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
+            touch-action: none;
+            height: 100dvh;
         }
         .font-orbitron {
             font-family: 'Orbitron', sans-serif;
@@ -31,18 +38,18 @@
         }
         .scan-line {
             position: absolute;
-            height: 2px;
+            height: 3px;
             width: 100%;
             background: #3b82f6;
-            box-shadow: 0 0 15px #3b82f6;
-            animation: scan 2.5s infinite linear;
+            box-shadow: 0 0 15px #3b82f6, 0 0 30px #3b82f6;
+            animation: scan 2s infinite ease-in-out;
+            z-index: 10;
         }
-        .pulse-ring {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: .5; transform: scale(1.05); }
+        /* Previne o bounce do iOS */
+        html, body {
+            position: fixed;
+            width: 100%;
+            height: 100%;
         }
     </style>
 <script type="importmap">
